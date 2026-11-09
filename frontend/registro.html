@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro del alumno</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body class="page page--student">
+  <main class="container container--small">
+    <header class="panel panel--header">
+      <p class="eyebrow">Aula de Innovación Pedagógica</p>
+      <h1>Registro de uso del equipo</h1>
+    </header>
+
+    <section class="panel">
+      <div class="equipment-box">
+        <span class="equipment-box__label">Equipo detectado</span>
+        <strong id="equipoDetectado">PC-12</strong>
+      </div>
+
+      <form id="formRegistro" class="form">
+        <div class="field-row">
+          <div class="field">
+            <label for="grado">Grado</label>
+            <select id="grado" name="grado">
+              <option value="">Seleccioná</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="seccion">Sección</label>
+            <select id="seccion" name="seccion" disabled>
+              <option value="">Primero elegí grado</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="buscadorAlumno">Buscar alumno</label>
+          <input id="buscadorAlumno" name="buscadorAlumno" type="text" placeholder="Escribí nombre o apellido" autocomplete="off" />
+        </div>
+
+        <div class="table-wrap">
+          <div class="table-header">
+            <span>Alumnos</span>
+            <span id="contadorAlumnos">0</span>
+          </div>
+
+          <div id="resultadosAlumno" class="resultados-alumno" aria-live="polite">
+            <p class="resultados-alumno__vacio">Elegí grado y sección para ver la lista de alumnos.</p>
+          </div>
+        </div>
+
+        <div id="alumnoSeleccionado" class="selected-student" hidden></div>
+        <input type="hidden" id="alumno_id" name="alumno_id" value="" />
+
+        <div class="field">
+          <label for="pin">PIN opcional</label>
+          <input id="pin" name="pin" type="password" maxlength="6" placeholder="Ej.: 1234" />
+        </div>
+
+        <button type="submit" class="button button--primary">Registrar</button>
+        <button id="botonTermine" type="button" class="button button--secondary hidden">Terminé</button>
+      </form>
+
+      <div id="mensajeConfirmacion" class="confirmation" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <script src="js/registro.js"></script>
+</body>
+</html>

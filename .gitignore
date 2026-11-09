@@ -1,0 +1,24 @@
+# Base de datos (se genera con init_db.py)
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+
+# Secretos y configuración local
+.env
+config.txt
+secret_key*
+*.key
+
+# Archivos generados e informe
+*.xlsx
+*.docx
+backend/analisis/salidas/
+docs/descripcion_proceso.md
+
+# Python y entorno
+__pycache__/
+*.pyc
+venv/
+.venv/
+.vscode/

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acceso administrativo</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body class="page">
+  <main class="container container--small">
+    <header class="panel panel--header">
+      <p class="eyebrow">Aula de Innovación Pedagógica</p>
+      <h1>Acceso administrativo</h1>
+    </header>
+    <section class="panel">
+      <form id="formLogin" class="form">
+        <div class="field">
+          <label for="usuario">Usuario</label>
+          <input id="usuario" name="usuario" type="text" autocomplete="username" required />
+        </div>
+        <div class="field">
+          <label for="contrasena">Contraseña</label>
+          <input id="contrasena" name="contrasena" type="password" autocomplete="current-password" required />
+        </div>
+        <button id="botonLogin" class="button button--primary" type="submit">Iniciar sesión</button>
+        <p id="mensajeLogin" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+  <script src="js/login.js"></script>
+</body>
+</html>

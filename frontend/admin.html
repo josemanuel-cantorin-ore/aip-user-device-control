@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel administrativo</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body class="page page--admin">
+  <main class="container container--wide">
+    <header class="panel panel--header panel--admin-header">
+      <div>
+        <p class="eyebrow">Aula de Innovación Pedagógica</p>
+        <h1>Panel del administrador</h1>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+        <div class="notice">Estado real de la aula</div>
+        <div id="sesionAdmin" aria-live="polite"></div>
+        <button id="cerrarSesionAdmin" class="button button--secondary" type="button">Cerrar sesión del administrador</button>
+        <nav aria-label="Navegación rápida">
+          <a href="/incidencias.html">Incidencias</a> |
+          <a href="/historial.html">Historial</a> |
+          <a id="enlaceBitacora" href="/bitacora.html" hidden>Bitácora</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="stats-grid" aria-label="Estadísticas de equipos">
+      <article class="stat-card stat-card--ocupado">
+        <span>Equipos ocupados</span>
+        <strong id="totalOcupados">0</strong>
+      </article>
+      <article class="stat-card stat-card--libre">
+        <span>Equipos libres</span>
+        <strong id="totalLibres">0</strong>
+      </article>
+      <article class="stat-card stat-card--sin-senal">
+        <span>Sin señal</span>
+        <strong id="totalSinSenal">0</strong>
+      </article>
+      <article class="stat-card stat-card--mantenimiento">
+        <span>En mantenimiento</span>
+        <strong id="totalMantenimiento">0</strong>
+      </article>
+    </section>
+
+    <section class="panel panel--statusbar" aria-label="Estado del sistema">
+      <div class="server-status" id="estadoServidor">Conectado</div>
+      <div class="last-update">Última actualización: <strong id="ultimaActualizacion">--:--:--</strong></div>
+    </section>
+
+    <section class="panel panel--toolbar" aria-label="Filtros del mapa">
+      <div class="toolbar-field toolbar-field--search">
+        <label for="busquedaEquipo">Buscar equipo</label>
+        <input id="busquedaEquipo" type="search" placeholder="PC-12 o nombre del alumno" autocomplete="off" />
+      </div>
+
+      <div class="toolbar-field">
+        <label for="filtroGrado">Grado</label>
+        <select id="filtroGrado">
+          <option value="todos">Todos</option>
+        </select>
+      </div>
+
+      <div class="toolbar-field">
+        <label for="filtroSeccion">Sección</label>
+        <select id="filtroSeccion">
+          <option value="todos">Todas</option>
+        </select>
+      </div>
+    </section>
+
+    <div class="legend" aria-label="Leyenda de colores">
+      <span class="legend-item"><span class="legend-swatch legend-swatch--ocupado"></span>Ocupado</span>
+      <span class="legend-item"><span class="legend-swatch legend-swatch--libre"></span>Libre</span>
+      <span class="legend-item"><span class="legend-swatch legend-swatch--sin-senal"></span>Sin señal</span>
+      <span class="legend-item"><span class="legend-swatch legend-swatch--mantenimiento"></span>Mantenimiento / baja</span>
+    </div>
+
+    <section class="admin-layout">
+      <div class="panel panel--grid">
+        <div id="gridEquipos" class="equipment-grid" aria-live="polite"></div>
+      </div>
+
+      <aside id="detalleEquipo" class="panel panel--detail" aria-live="polite">
+        <h2>Detalle del equipo</h2>
+        <p class="detail-empty">Seleccioná un equipo para ver su estado.</p>
+      </aside>
+    </section>
+
+    <section class="panel panel--actions">
+      <button id="cerrarTodas" class="button button--danger" type="button" hidden>Cerrar todas las sesiones</button>
+      <button id="abrirIncidencia" class="button button--secondary" type="button">Reportar incidencia</button>
+    </section>
+
+    <section class="panel" style="margin-top: 22px;">
+      <h2>Cambiar contraseña</h2>
+      <form id="formCambiarPassword" class="form" style="margin-top: 16px;">
+        <div class="field">
+          <label for="contrasenaActual">Contraseña actual</label>
+          <input id="contrasenaActual" type="password" autocomplete="current-password" required />
+        </div>
+        <div class="field">
+          <label for="contrasenaNueva">Nueva contraseña (mínimo 8 caracteres)</label>
+          <input id="contrasenaNueva" type="password" minlength="8" autocomplete="new-password" required />
+        </div>
+        <button class="button button--primary" type="submit">Actualizar contraseña</button>
+        <p id="mensajePassword" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="formIncidenciaWrap" class="panel panel--incident hidden">
+      <h2>Reportar incidencia</h2>
+      <form id="formIncidencia" class="incident-form">
+        <div class="field">
+          <label for="equipoIncidencia">Equipo</label>
+          <select id="equipoIncidencia" name="equipoIncidencia"></select>
+        </div>
+
+        <div class="field">
+          <label for="descripcionIncidencia">Descripción</label>
+          <textarea id="descripcionIncidencia" name="descripcionIncidencia" rows="3" placeholder="Ej.: El equipo no responde al iniciar Veyon."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="gravedadIncidencia">Gravedad</label>
+          <select id="gravedadIncidencia" name="gravedadIncidencia">
+            <option value="leve">Leve</option>
+            <option value="moderada">Moderada</option>
+            <option value="grave">Grave</option>
+          </select>
+        </div>
+
+        <button type="submit" class="button button--primary">Guardar incidencia</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

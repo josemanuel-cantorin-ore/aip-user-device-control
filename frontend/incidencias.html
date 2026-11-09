@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Incidencias</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body class="page">
+  <main class="container container--wide">
+    <header class="panel panel--header">
+      <div>
+        <p class="eyebrow">Aula de Innovación Pedagógica</p>
+        <h1>Incidencias</h1>
+      </div>
+      <nav>
+        <a href="/admin.html">Panel admin</a> |
+        <a href="/historial.html">Historial</a>
+      </nav>
+    </header>
+
+    <section class="panel">
+      <form id="filtrosIncidencias" class="form">
+        <div class="field-row">
+          <div class="field">
+            <label for="filtroIncidenciaEquipo">Equipo</label>
+            <input id="filtroIncidenciaEquipo" type="text" placeholder="PC-01" />
+          </div>
+          <div class="field">
+            <label for="filtroIncidenciaEstado">Estado</label>
+            <select id="filtroIncidenciaEstado">
+              <option value="">Todos</option>
+              <option value="abierta">Abierta</option>
+              <option value="en_revision">En revisión</option>
+              <option value="resuelta">Resuelta</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="filtroIncidenciaGravedad">Gravedad</label>
+            <select id="filtroIncidenciaGravedad">
+              <option value="">Todas</option>
+              <option value="leve">Leve</option>
+              <option value="moderada">Moderada</option>
+              <option value="grave">Grave</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="filtroIncidenciaDesde">Desde</label>
+            <input id="filtroIncidenciaDesde" type="date" />
+          </div>
+          <div class="field">
+            <label for="filtroIncidenciaHasta">Hasta</label>
+            <input id="filtroIncidenciaHasta" type="date" />
+          </div>
+        </div>
+        <div class="detail-actions">
+          <button type="submit" class="button button--primary">Filtrar</button>
+          <button type="button" id="limpiarIncidencias" class="button button--secondary">Limpiar</button>
+          <button type="button" id="descargarIncidenciasExcel" class="button button--secondary">Descargar Excel</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Nueva incidencia</h2>
+      <form id="formNuevaIncidencia" class="incident-form" style="margin-top: 18px;">
+        <div class="field-row">
+          <div class="field">
+            <label for="equipoNuevaIncidencia">Equipo</label>
+            <select id="equipoNuevaIncidencia" required></select>
+          </div>
+          <div class="field">
+            <label for="gravedadNuevaIncidencia">Gravedad</label>
+            <select id="gravedadNuevaIncidencia">
+              <option value="leve">Leve</option>
+              <option value="moderada">Moderada</option>
+              <option value="grave">Grave</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="descripcionNuevaIncidencia">Descripción</label>
+          <textarea id="descripcionNuevaIncidencia" rows="4" placeholder="Describí la incidencia para que quede trazable." required></textarea>
+        </div>
+        <button type="submit" class="button button--primary">Guardar incidencia</button>
+      </form>
+    </section>
+
+    <section class="panel" style="margin-top: 18px;">
+      <h2>Listado de incidencias</h2>
+      <div class="table-wrap" style="margin-top: 16px;">
+        <table class="alumno-table">
+          <thead>
+            <tr>
+              <th>Equipo</th>
+              <th>Severidad</th>
+              <th>Estado</th>
+              <th>Fecha</th>
+              <th>Responsable probable</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody id="tablaIncidencias"></tbody>
+        </table>
+      </div>
+      <div class="detail-actions" style="margin-top: 14px;">
+        <button type="button" id="paginaAnteriorIncidencias" class="button button--secondary">Anterior</button>
+        <button type="button" id="paginaSiguienteIncidencias" class="button button--secondary">Siguiente</button>
+      </div>
+    </section>
+
+    <section id="detalleIncidencia" class="panel" style="margin-top: 18px;">
+      <h2>Detalle de la incidencia</h2>
+      <p class="detail-empty">Seleccioná una incidencia para ver su detalle.</p>
+    </section>
+  </main>
+
+  <script src="js/incidencias.js"></script>
+</body>
+</html>

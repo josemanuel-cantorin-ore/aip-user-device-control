@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Historial de sesiones</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body class="page">
+  <main class="container container--wide">
+    <header class="panel panel--header">
+      <div>
+        <p class="eyebrow">Aula de Innovación Pedagógica</p>
+        <h1>Historial de sesiones</h1>
+      </div>
+      <nav>
+        <a href="/admin.html">Panel admin</a> |
+        <a href="/incidencias.html">Incidencias</a>
+      </nav>
+    </header>
+
+    <section class="panel">
+      <form id="filtrosHistorial" class="form">
+        <div class="field-row">
+          <div class="field">
+            <label for="filtroEquipo">Equipo</label>
+            <input id="filtroEquipo" type="text" placeholder="PC-01" autocomplete="off" />
+            <div id="sugerenciasEquipo" class="autocomplete-suggestions hidden" aria-live="polite"></div>
+          </div>
+          <div class="field">
+            <label for="filtroAlumno">Alumno</label>
+            <input id="filtroAlumno" type="text" placeholder="Nombre o código" autocomplete="off" />
+            <div id="sugerenciasAlumno" class="autocomplete-suggestions hidden" aria-live="polite"></div>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="filtroGrado">Grado</label>
+            <input id="filtroGrado" type="number" min="1" max="5" placeholder="1" />
+          </div>
+          <div class="field">
+            <label for="filtroSeccion">Sección</label>
+            <select id="filtroSeccion">
+              <option value="">Todas</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="filtroTipoCierre">Tipo de cierre</label>
+            <select id="filtroTipoCierre">
+              <option value="">Todos</option>
+              <option value="admin">Admin</option>
+              <option value="alumno">Alumno</option>
+              <option value="automatico">Automático</option>
+              <option value="reemplazo">Reemplazo</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="filtroDesde">Desde</label>
+            <input id="filtroDesde" type="date" />
+          </div>
+          <div class="field">
+            <label for="filtroHasta">Hasta</label>
+            <input id="filtroHasta" type="date" />
+          </div>
+          <div class="field">
+            <label for="filtroSoloAbiertas">Solo abiertas</label>
+            <select id="filtroSoloAbiertas">
+              <option value="0">No</option>
+              <option value="1">Sí</option>
+            </select>
+          </div>
+        </div>
+        <div class="detail-actions">
+          <button type="submit" class="button button--primary">Filtrar</button>
+          <button type="button" id="limpiarHistorial" class="button button--secondary">Limpiar</button>
+          <button type="button" id="descargarHistorialExcel" class="button button--secondary">Descargar Excel</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel" style="margin-top: 18px;">
+      <div class="table-wrap">
+        <table class="alumno-table">
+          <thead>
+            <tr>
+              <th>Equipo</th>
+              <th>Alumno</th>
+              <th>Grado</th>
+              <th>Sección</th>
+              <th>Inicio</th>
+              <th>Fin</th>
+              <th>Duración</th>
+              <th>Tipo de cierre</th>
+            </tr>
+          </thead>
+          <tbody id="tablaHistorial"></tbody>
+        </table>
+      </div>
+      <div class="detail-actions" style="margin-top: 14px;">
+        <button type="button" id="paginaAnteriorHistorial" class="button button--secondary">Anterior</button>
+        <button type="button" id="paginaSiguienteHistorial" class="button button--secondary">Siguiente</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/historial.js"></script>
+</body>
+</html>

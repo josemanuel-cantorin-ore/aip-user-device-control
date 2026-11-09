@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bitácora de acciones</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body class="page">
+  <main class="container container--wide">
+    <header class="panel panel--header panel--admin-header">
+      <div>
+        <p class="eyebrow">Aula de Innovación Pedagógica</p>
+        <h1>Bitácora de acciones</h1>
+      </div>
+      <nav aria-label="Navegación">
+        <a href="/admin.html">Panel admin</a> |
+        <a href="/incidencias.html">Incidencias</a> |
+        <a href="/historial.html">Historial</a>
+      </nav>
+    </header>
+
+    <section class="panel">
+      <form id="filtrosBitacora" class="form">
+        <div class="field-row">
+          <div class="field">
+            <label for="filtroUsuario">Usuario</label>
+            <input id="filtroUsuario" type="search" list="usuariosBitacora" autocomplete="off" placeholder="Usuario o nombre" />
+            <datalist id="usuariosBitacora"></datalist>
+          </div>
+          <div class="field">
+            <label for="filtroAccion">Acción</label>
+            <select id="filtroAccion">
+              <option value="">Todas</option>
+              <option value="login_correcto">Inicio de sesión correcto</option>
+              <option value="login_fallido">Inicio de sesión fallido</option>
+              <option value="logout">Cierre de sesión</option>
+              <option value="cambio_password">Cambio de contraseña</option>
+              <option value="cierre_sesion_individual">Cierre individual</option>
+              <option value="cierre_sesiones_masivo">Cierre masivo</option>
+              <option value="creacion_incidencia">Creación de incidencia</option>
+              <option value="cambio_estado_incidencia">Cambio de estado de incidencia</option>
+              <option value="descarga_reporte_excel">Descarga de reporte Excel</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="filtroDesde">Desde</label>
+            <input id="filtroDesde" type="date" />
+          </div>
+          <div class="field">
+            <label for="filtroHasta">Hasta</label>
+            <input id="filtroHasta" type="date" />
+          </div>
+        </div>
+        <div class="detail-actions">
+          <button type="submit" class="button button--primary">Filtrar</button>
+          <button id="limpiarBitacora" type="button" class="button button--secondary">Limpiar</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel" style="margin-top: 18px;">
+      <p id="estadoBitacora" role="status" aria-live="polite"></p>
+      <div class="table-wrap">
+        <table class="alumno-table">
+          <thead>
+            <tr>
+              <th>Fecha y hora</th>
+              <th>Usuario</th>
+              <th>Acción</th>
+              <th>Registro</th>
+              <th>Detalle</th>
+              <th>IP origen</th>
+            </tr>
+          </thead>
+          <tbody id="tablaBitacora"></tbody>
+        </table>
+      </div>
+      <p id="resumenBitacora" aria-live="polite"></p>
+      <div class="detail-actions">
+        <button id="paginaAnteriorBitacora" type="button" class="button button--secondary">Anterior</button>
+        <button id="paginaSiguienteBitacora" type="button" class="button button--secondary">Siguiente</button>
+      </div>
+    </section>
+  </main>
+  <script src="js/bitacora.js"></script>
+</body>
+</html>
